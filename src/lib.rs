@@ -17,7 +17,19 @@ impl<T: PartialEq + Debug + Clone> DynamicLinkedList<T> {
     }
 
     pub fn insert(&mut self, data: T) {
-        todo!("not implemented");
+        let mut new_node = Box::new(Node { data, next: None });
+
+        match self.head.as_mut() {
+            None => self.head = Some(new_node),
+            Some(mut current) => {
+                while let Some(ref mut next) = current.next {
+                    current = next;
+                }
+                current.next = Some(new_node);
+            }
+        }
+
+        self.length += 1;
     }
 
     pub fn get(&self, index: usize) -> Option<T> {
