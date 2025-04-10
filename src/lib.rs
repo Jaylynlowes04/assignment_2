@@ -33,7 +33,17 @@ impl<T: PartialEq + Debug + Clone> DynamicLinkedList<T> {
     }
 
     pub fn get(&self, index: usize) -> Option<T> {
-        todo!("not implemented");
+        if index >= self.length {
+            return None;
+        }
+
+        let mut current = self.head.as_ref();
+        for _ in 0..index {
+            current = current.unwrap().next.as_ref();
+        }
+
+        Some(current.unwrap().data.clone())
+    
     }
 }
 mod test;
