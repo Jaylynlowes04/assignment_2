@@ -1,14 +1,19 @@
-pub fn add(left: u64, right: u64) -> u64 {
-    left + right
+use std::fmt::Debug;
+
+struct Node<T> {
+    data: T,
+    next: Option<Box<Node<T>>>,
 }
 
-#[cfg(test)]
-mod tests {
-    use super::*;
+pub struct DynamicLinkedList<T> {
+    head: Option<Box<Node<T>>>,
+    length: usize,
+}
 
-    #[test]
-    fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
+impl<T: PartialEq + Debug + Clone> DynamicLinkedList<T> {
+    /// Creates a new, empty linked list.
+    pub fn new() -> Self {
+        Self { head: None, length: 0 }
     }
 }
+mod test;
