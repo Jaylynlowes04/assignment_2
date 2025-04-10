@@ -15,5 +15,9 @@ impl<T: PartialEq + Debug + Clone> DynamicLinkedList<T> {
     pub fn new() -> Self {
         Self { head: None, length: 0 }
     }
+
+    pub fn insert(&mut self, data: T) {
+        todo!("not implemented");
+    }
 }
 mod test;
