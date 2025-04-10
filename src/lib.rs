@@ -45,5 +45,9 @@ impl<T: PartialEq + Debug + Clone> DynamicLinkedList<T> {
         Some(current.unwrap().data.clone())
     
     }
+
+    pub fn insert_at_index(&mut self, index: usize, data: T) {
+        todo!("not implemented");
+    }
 }
 mod test;
