@@ -67,5 +67,9 @@ impl<T: PartialEq + Debug + Clone> DynamicLinkedList<T> {
 
         self.length += 1;
     }
+
+    pub fn delete_element(&mut self, data: T) -> bool {
+        todo!("not implemented");
+    }
 }
 mod test;
