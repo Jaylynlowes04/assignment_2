@@ -24,4 +24,17 @@ mod test {
         assert_eq!(list.get(1), Some(2));
         assert_eq!(list.get(2), Some(3));
     }
+
+    #[test]
+    fn should_delete_element() {
+        let mut list = DynamicLinkedList::new();
+        list.insert(1);
+        list.insert(2);
+        list.insert(3);
+
+        assert!(list.delete_element(2));
+        assert_eq!(list.get(0), Some(1));
+        assert_eq!(list.get(1), Some(3));
+        assert!(!list.delete_element(99));
+    }
 }
