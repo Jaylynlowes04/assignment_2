@@ -47,7 +47,25 @@ impl<T: PartialEq + Debug + Clone> DynamicLinkedList<T> {
     }
 
     pub fn insert_at_index(&mut self, index: usize, data: T) {
-        todo!("not implemented");
+        if index > self.length {
+            return;
+        }
+
+        let mut new_node = Box::new(Node { data, next: None });
+
+        if index == 0 {
+            new_node.next = self.head.take();
+            self.head = Some(new_node);
+        } else {
+            let mut current = self.head.as_mut();
+            for _ in 0..index - 1 {
+                current = current.unwrap().next.as_mut();
+            }
+            new_node.next = current.as_mut().unwrap().next.take();
+            current.as_mut().unwrap().next = Some(new_node);
+        }
+
+        self.length += 1;
     }
 }
 mod test;
