@@ -22,8 +22,8 @@ impl<T: PartialEq + Debug + Clone> DynamicLinkedList<T> {
         match self.head.as_mut() {
             None => self.head = Some(new_node),
             Some(mut current) => {
-                while let Some(ref mut next) = current.next {
-                    current = next;
+                while let Some(next_node) = current.next.as_mut() {
+                    current = next_node;
                 }
                 current.next = Some(new_node);
             }
