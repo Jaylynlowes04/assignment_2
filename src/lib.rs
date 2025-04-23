@@ -225,6 +225,14 @@ impl<T: Clone + PartialEq> StaticLinkedList<T> {
         Some(self.nodes[current].as_ref()?.data.clone())
     }
 
+    /// # Description
+    /// Deletes the first occurrence of an element.
+    /// 
+    /// # Parameters
+    /// - data: the element to delete.
+    /// 
+    /// # Returns
+    /// True if the element was found and deleted, false otherwise.
     pub fn delete_element(&mut self, data: T) -> bool {
         let mut current = self.head;
         let mut prev: Option<usize> = None;
