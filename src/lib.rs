@@ -69,7 +69,21 @@ impl<T: PartialEq + Debug + Clone> DynamicLinkedList<T> {
     }
 
     pub fn delete_element(&mut self, data: T) -> bool {
-        todo!("not implemented");
+    
+        let mut current = &mut self.head;
+
+        while let Some(node) = current {
+            if node.data == data {
+                *current = node.next.take();
+                self.length -= 1;
+                return true;
+            }
+            current = &mut node.next;
+        }
+    
+        false
     }
+    
+    
 }
 mod test;
