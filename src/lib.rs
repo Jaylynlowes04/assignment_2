@@ -185,6 +185,11 @@ impl<T: Clone + PartialEq> StaticLinkedList<T> {
         self.free.push(index);
     }
 
+    /// # Description
+    /// Inserts a new element at the end of the list.
+    /// 
+    /// # Parameters
+    /// - data: the element to insert.
     pub fn insert(&mut self, data: T) {
         if let Some(new_index) = self.allocate_node(data) {
             if self.head.is_none() {
