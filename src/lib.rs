@@ -127,5 +127,9 @@ impl<T: PartialEq + Debug + Clone> DynamicLinkedList<T> {
         true
     
     }
+
+    pub fn find(&self, data: T) -> bool {
+        todo!("not implemented");
+    }
 }
 mod test;
