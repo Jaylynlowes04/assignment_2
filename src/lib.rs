@@ -314,6 +314,15 @@ impl<T: Clone + PartialEq> StaticLinkedList<T> {
         true
     }
 
+    /// # Description
+    /// Updates the first occurrence of an element.
+    /// 
+    /// # Parameters
+    /// - old_data: the element to update.
+    /// - new_data: the new value.
+    /// 
+    /// # Returns
+    /// True if the element was found and updated, false otherwise.
     pub fn update_element(&mut self, old_data: T, new_data: T) -> bool {
         let mut current = self.head;
 
