@@ -183,5 +183,10 @@ impl<T: Clone + PartialEq> StaticLinkedList<T> {
     pub fn insert(&mut self, data: T) {
         todo!("not implemented");
     }
+
+    pub fn get(&self, index: usize) -> Option<T> {
+        todo!("not implemented");
+    }
+    
  }  
 mod test;
