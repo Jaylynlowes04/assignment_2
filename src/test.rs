@@ -151,4 +151,14 @@ mod test {
         assert_eq!(list.get(1), Some("updated".to_string()));
         assert!(!list.update_element_at_index(5, "fail".to_string()));
     }
+
+    #[test]
+    fn test_static_find() {
+        let mut list = StaticLinkedList::new();
+        list.insert("alpha".to_string());
+        list.insert("beta".to_string());
+
+        assert!(list.find("beta".to_string()));
+        assert!(!list.find("gamma".to_string()));
+    }
 }
