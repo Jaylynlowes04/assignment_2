@@ -92,4 +92,17 @@ mod test {
         assert_eq!(list.get(2), Some("cherry".to_string()));
         assert_eq!(list.get(3), None);
     }
+
+    #[test]
+    fn should_static_delete_element() {
+        let mut list = StaticLinkedList::new();
+        list.insert("a".to_string());
+        list.insert("b".to_string());
+        list.insert("c".to_string());
+
+        assert!(list.delete_element("b".to_string()));
+        assert_eq!(list.get(0), Some("a".to_string()));
+        assert_eq!(list.get(1), Some("c".to_string()));
+        assert!(!list.delete_element("x".to_string()));
+    }
 }
