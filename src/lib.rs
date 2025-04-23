@@ -283,6 +283,14 @@ impl<T: Clone + PartialEq> StaticLinkedList<T> {
         } 
     }
 
+    /// # Description
+    /// Deletes an element at a specific index.
+    ///     
+    /// # Parameters
+    /// - index: the position to delete the element.
+    /// 
+    /// # Returns
+    /// True if the element was found and deleted, false otherwise.
     pub fn delete_at_index(&mut self, index: usize) -> bool {
         if index >= self.length {
             return false;
