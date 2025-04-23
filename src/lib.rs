@@ -304,7 +304,16 @@ impl<T: Clone + PartialEq> StaticLinkedList<T> {
     }
 
     pub fn find(&self, data: T) -> bool {
-        todo!("not implemented");
+        let mut current = self.head;
+
+        while let Some(index) = current {
+            if self.nodes[index].as_ref().unwrap().data == data {
+                return true;
+            }
+            current = self.nodes[index].as_ref().unwrap().next;
+        }
+
+        false
     }
  }  
 mod test;
