@@ -114,7 +114,18 @@ impl<T: PartialEq + Debug + Clone> DynamicLinkedList<T> {
     }
 
     pub fn update_element_at_index(&mut self, index: usize, data: T) -> bool {
-        todo!("not implemented");
+        if index >= self.length {
+            return false;
+        }
+    
+        let mut current = self.head.as_mut().unwrap();
+        for _ in 0..index {
+            current = current.next.as_mut().unwrap();
+        }
+    
+        current.data = data;
+        true
+    
     }
 }
 mod test;
