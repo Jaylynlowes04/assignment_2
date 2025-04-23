@@ -302,5 +302,9 @@ impl<T: Clone + PartialEq> StaticLinkedList<T> {
         self.nodes[current].as_mut().unwrap().data = data;
         true
     }
+
+    pub fn find(&self, data: T) -> bool {
+        todo!("not implemented");
+    }
  }  
 mod test;
