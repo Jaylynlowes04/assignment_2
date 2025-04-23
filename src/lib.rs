@@ -19,16 +19,12 @@ impl<T: PartialEq + Debug + Clone> DynamicLinkedList<T> {
     pub fn insert(&mut self, data: T) {
         let mut new_node = Box::new(Node { data, next: None });
 
-        match self.head.as_mut() {
-            None => self.head = Some(new_node),
-            Some(mut current) => {
-                while let Some(next_node) = current.next.as_mut() {
-                    current = next_node;
-                }
-                current.next = Some(new_node);
-            }
+        let mut current = &mut self.head;
+        while let Some(node) = current {
+            current = &mut node.next;
         }
 
+        *current = Some(new_node);
         self.length += 1;
     }
 
@@ -72,15 +68,17 @@ impl<T: PartialEq + Debug + Clone> DynamicLinkedList<T> {
     
         let mut current = &mut self.head;
 
-        while let Some(node) = current {
-            if node.data == data {
-                *current = node.next.take();
+        while let Some(mut boxed_node) = current.take() {
+            if boxed_node.data == data {
+                *current = boxed_node.next.take(); // Remove current node
                 self.length -= 1;
                 return true;
+            } else {
+                *current = Some(boxed_node); // Put it back unchanged
+                current = &mut current.as_mut().unwrap().next;
             }
-            current = &mut node.next;
         }
-    
+
         false
     }
     
