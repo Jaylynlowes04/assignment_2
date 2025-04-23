@@ -69,4 +69,14 @@ mod test {
         assert_eq!(list.get(1), Some(15));
         assert!(!list.update_element_at_index(5, 99));
     }
+
+    #[test]
+    fn test_find() {
+        let mut list = DynamicLinkedList::new();
+        list.insert(7);
+        list.insert(14);
+        list.insert(21);
+        assert!(list.find(14));
+        assert!(!list.find(100));
+    }
 }
