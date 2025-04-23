@@ -59,4 +59,14 @@ mod test {
         assert_eq!(list.get(0), Some(150));
         assert!(!list.update_element(999, 111));
     }
+
+    #[test]
+    fn should_update_element_at_index() {
+        let mut list = DynamicLinkedList::new();
+        list.insert(5);
+        list.insert(10);
+        assert!(list.update_element_at_index(1, 15));
+        assert_eq!(list.get(1), Some(15));
+        assert!(!list.update_element_at_index(5, 99));
+    }
 }
