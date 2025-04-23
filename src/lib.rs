@@ -179,6 +179,9 @@ impl<T: Clone + PartialEq> StaticLinkedList<T> {
         self.nodes[index] = None;
         self.free.push(index);
     }
-    
+
+    pub fn insert(&mut self, data: T) {
+        todo!("not implemented");
+    }
  }  
 mod test;
