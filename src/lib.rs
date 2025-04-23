@@ -150,4 +150,23 @@ struct Node<T: Clone + PartialEq> {
     data: T,
     next: Option<usize>,
 }
+
+pub struct StaticLinkedList<T: Clone + PartialEq> {
+    nodes: [Option<Node<T>>; MAX_SIZE],
+    head: Option<usize>,
+    free: Vec<usize>,
+    length: usize,
+}
+
+impl<T: Clone + PartialEq> StaticLinkedList<T> {
+    pub fn new() -> Self {
+        Self {
+            nodes: array_init::array_init(|_| None),
+            head: None,
+            free: (0..MAX_SIZE).rev().collect(),
+            length: 0,
+        }
+    }
+    
+ }  
 mod test;
