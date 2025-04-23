@@ -36,13 +36,13 @@ impl<T: PartialEq + Debug + Clone> DynamicLinkedList<T> {
         if index >= self.length {
             return None;
         }
-
+    
         let mut current = self.head.as_ref();
         for _ in 0..index {
-            current = current.unwrap().next.as_ref();
+            current = current?.next.as_ref();
         }
-
-        Some(current.unwrap().data.clone())
+    
+        current.map(|node| node.data.clone())
     
     }
 
