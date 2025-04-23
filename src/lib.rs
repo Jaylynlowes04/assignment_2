@@ -100,5 +100,8 @@ impl<T: PartialEq + Debug + Clone> DynamicLinkedList<T> {
         true
     }
     
+    pub fn update_element(&mut self, old_data: T, new_data: T) -> bool {
+        todo!("not implemented");
+    }
 }
 mod test;
