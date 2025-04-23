@@ -140,4 +140,15 @@ mod test {
         assert_eq!(list.get(0), Some("new".to_string()));
         assert!(!list.update_element("missing".to_string(), "ignored".to_string()));
     }
+
+    #[test]
+    fn test_static_update_element_at_index() {
+        let mut list = StaticLinkedList::new();
+        list.insert("one".to_string());
+        list.insert("two".to_string());
+
+        assert!(list.update_element_at_index(1, "updated".to_string()));
+        assert_eq!(list.get(1), Some("updated".to_string()));
+        assert!(!list.update_element_at_index(5, "fail".to_string()));
+    }
 }
