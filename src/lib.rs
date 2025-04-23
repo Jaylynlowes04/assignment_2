@@ -33,6 +33,11 @@ impl<T: PartialEq + Debug + Clone> DynamicLinkedList<T> {
         self.length += 1;
     }
 
+    /// # Description
+    /// Retrieves an element at a specific index.
+    ///     
+    /// # Parameters
+    /// - index: the position to access
     pub fn get(&self, index: usize) -> Option<T> {
         if index >= self.length {
             return None;
