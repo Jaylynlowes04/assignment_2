@@ -105,4 +105,16 @@ mod test {
         assert_eq!(list.get(1), Some("c".to_string()));
         assert!(!list.delete_element("x".to_string()));
     }
+
+    #[test] 
+    fn test_insert_at_index() {
+        let mut list = StaticLinkedList::new();
+        list.insert("a".to_string());
+        list.insert("c".to_string());
+        list.insert_at_index(1, "b".to_string());
+
+        assert_eq!(list.get(0), Some("a".to_string()));
+        assert_eq!(list.get(1), Some("b".to_string()));
+        assert_eq!(list.get(2), Some("c".to_string()));
+    }
 }

@@ -230,7 +230,25 @@ impl<T: Clone + PartialEq> StaticLinkedList<T> {
     }
 
     pub fn insert_at_index(&mut self, index: usize, data: T) {
-        todo!("not implemented");
+        if index > self.length {
+            return;
+        }
+
+        if let Some(new_index) = self.allocate_node(data) {
+            if index == 0 {
+                self.nodes[new_index].as_mut().unwrap().next = self.head;
+                self.head = Some(new_index);
+            } else {
+                let mut current = self.head.unwrap();
+                for _ in 0..index - 1 {
+                    current = self.nodes[current].as_ref().unwrap().next.unwrap();
+                }
+                self.nodes[new_index].as_mut().unwrap().next =
+                    self.nodes[current].as_ref().unwrap().next;
+                self.nodes[current].as_mut().unwrap().next = Some(new_index);
+            }
+            self.length += 1;
+        } 
     }
  }  
 mod test;
