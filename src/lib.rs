@@ -181,12 +181,23 @@ impl<T: Clone + PartialEq> StaticLinkedList<T> {
     }
 
     pub fn insert(&mut self, data: T) {
-        todo!("not implemented");
+        if let Some(new_index) = self.allocate_node(data) {
+            if self.head.is_none() {
+                self.head = Some(new_index);
+            } else {
+                let mut current = self.head.unwrap();
+                while let Some(next_index) = self.nodes[current].as_ref().unwrap().next {
+                    current = next_index;
+                }
+                self.nodes[current].as_mut().unwrap().next = Some(new_index);
+            }
+            self.length += 1;
+        } 
     }
 
     pub fn get(&self, index: usize) -> Option<T> {
         todo!("not implemented");
     }
-    
+
  }  
 mod test;
