@@ -228,5 +228,9 @@ impl<T: Clone + PartialEq> StaticLinkedList<T> {
         }
         false
     }
+
+    pub fn insert_at_index(&mut self, index: usize, data: T) {
+        todo!("not implemented");
+    }
  }  
 mod test;
