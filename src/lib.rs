@@ -1,12 +1,12 @@
 use std::fmt::Debug;
 
-struct Node<T> {
+struct LinkedListNode<T> {
     data: T,
-    next: Option<Box<Node<T>>>,
+    next: Option<Box<LinkedListNode<T>>>,
 }
 
 pub struct DynamicLinkedList<T> {
-    head: Option<Box<Node<T>>>,
+    head: Option<Box<LinkedListNode<T>>>,
     length: usize,
 }
 
@@ -17,7 +17,7 @@ impl<T: PartialEq + Debug + Clone> DynamicLinkedList<T> {
     }
 
     pub fn insert(&mut self, data: T) {
-        let mut new_node = Box::new(Node { data, next: None });
+        let mut new_node = Box::new(LinkedListNode { data, next: None });
 
         let mut current = &mut self.head;
         while let Some(node) = current {
@@ -47,7 +47,7 @@ impl<T: PartialEq + Debug + Clone> DynamicLinkedList<T> {
             return;
         }
 
-        let mut new_node = Box::new(Node { data, next: None });
+        let mut new_node = Box::new(LinkedListNode { data, next: None });
 
         if index == 0 {
             new_node.next = self.head.take();
@@ -140,5 +140,14 @@ impl<T: PartialEq + Debug + Clone> DynamicLinkedList<T> {
 
         false
     }
+}
+
+// Static list
+const MAX_SIZE: usize = 100;
+
+#[derive(Clone, Debug)]
+struct Node<T: Clone + PartialEq> {
+    data: T,
+    next: Option<usize>,
 }
 mod test;
