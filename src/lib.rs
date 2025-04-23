@@ -178,6 +178,14 @@ impl<T: PartialEq + Debug + Clone> DynamicLinkedList<T> {
     
     }
 
+    /// # Description
+    /// Finds the first occurrence of an element.
+    /// 
+    /// # Parameters
+    /// - data: the element to find.
+    /// 
+    /// # Returns
+    /// True if the element was found, false otherwise.
     pub fn find(&self, data: T) -> bool {
         let mut current = self.head.as_ref();
 
