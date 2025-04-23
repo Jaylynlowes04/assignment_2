@@ -250,5 +250,9 @@ impl<T: Clone + PartialEq> StaticLinkedList<T> {
             self.length += 1;
         } 
     }
+
+    pub fn delete_at_index(&mut self, index: usize) -> bool {
+        todo!("not implemented");
+    }
  }  
 mod test;
