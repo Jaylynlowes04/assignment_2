@@ -16,6 +16,11 @@ impl<T: PartialEq + Debug + Clone> DynamicLinkedList<T> {
         Self { head: None, length: 0 }
     }
 
+    /// # Description
+    /// Inserts a new element at the end of the list.
+    /// 
+    /// # Parameters
+    /// - data: the element to insert.
     pub fn insert(&mut self, data: T) {
         let mut new_node = Box::new(LinkedListNode { data, next: None });
 
