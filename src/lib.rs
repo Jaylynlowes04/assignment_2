@@ -181,6 +181,7 @@ impl<T: PartialEq + Debug + Clone> DynamicLinkedList<T> {
     /// # Description
     /// Finds the first occurrence of an element.
     /// 
+    /// 
     /// # Parameters
     /// - data: the element to find.
     /// 
