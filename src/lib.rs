@@ -167,6 +167,12 @@ impl<T: Clone + PartialEq> StaticLinkedList<T> {
             length: 0,
         }
     }
-    
+
+    fn allocate_node(&mut self, data: T) -> Option<usize> {
+        self.free.pop().map(|index| {
+            self.nodes[index] = Some(Node { data, next: None });
+            index
+        })
+    }
  }  
 mod test;
