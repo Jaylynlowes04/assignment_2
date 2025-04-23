@@ -107,7 +107,7 @@ mod test {
     }
 
     #[test] 
-    fn test_insert_at_index() {
+    fn test_static_insert_at_index() {
         let mut list = StaticLinkedList::new();
         list.insert("a".to_string());
         list.insert("c".to_string());
@@ -116,5 +116,18 @@ mod test {
         assert_eq!(list.get(0), Some("a".to_string()));
         assert_eq!(list.get(1), Some("b".to_string()));
         assert_eq!(list.get(2), Some("c".to_string()));
+    }
+
+    #[test]
+    fn test_static_delete_at_index() {
+        let mut list = StaticLinkedList::new();
+        list.insert("first".to_string());
+        list.insert("second".to_string());
+        list.insert("third".to_string());
+
+        assert!(list.delete_at_index(1));
+        assert_eq!(list.get(0), Some("first".to_string()));
+        assert_eq!(list.get(1), Some("third".to_string()));
+        assert!(!list.delete_at_index(10));
     }
 }
