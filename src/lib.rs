@@ -174,5 +174,11 @@ impl<T: Clone + PartialEq> StaticLinkedList<T> {
             index
         })
     }
+
+    fn free_node(&mut self, index: usize) {
+        self.nodes[index] = None;
+        self.free.push(index);
+    }
+    
  }  
 mod test;
