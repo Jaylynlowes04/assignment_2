@@ -154,6 +154,15 @@ impl<T: PartialEq + Debug + Clone> DynamicLinkedList<T> {
         false
     }
 
+    /// # Description
+    /// Updates an element at a specific index.
+    ///     
+    /// # Parameters
+    /// - index: the position to update the element.
+    /// - data: the new value.
+    /// 
+    /// # Returns
+    /// True if the element was found and updated, false otherwise.
     pub fn update_element_at_index(&mut self, index: usize, data: T) -> bool {
         if index >= self.length {
             return false;
