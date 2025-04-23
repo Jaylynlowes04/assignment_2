@@ -158,6 +158,11 @@ pub struct StaticLinkedList<T: Clone + PartialEq> {
     length: usize,
 }
 
+/// # Description
+/// Creates a new, empty static linked list.
+/// 
+/// # Returns
+/// A new list with capacity for `MAX_SIZE` elements.
 impl<T: Clone + PartialEq> StaticLinkedList<T> {
     pub fn new() -> Self {
         Self {
