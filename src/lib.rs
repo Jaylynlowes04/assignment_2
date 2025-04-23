@@ -252,7 +252,26 @@ impl<T: Clone + PartialEq> StaticLinkedList<T> {
     }
 
     pub fn delete_at_index(&mut self, index: usize) -> bool {
-        todo!("not implemented");
+        if index >= self.length {
+            return false;
+        }
+
+        let mut current = self.head.unwrap();
+        if index == 0 {
+            self.head = self.nodes[current].as_ref().unwrap().next;
+            self.free_node(current);
+        } else {
+            let mut prev = current;
+            for _ in 0..index - 1 {
+                prev = self.nodes[prev].as_ref().unwrap().next.unwrap();
+            }
+            current = self.nodes[prev].as_ref().unwrap().next.unwrap();
+            self.nodes[prev].as_mut().unwrap().next = self.nodes[current].as_ref().unwrap().next;
+            self.free_node(current);
+        }
+
+        self.length -= 1;
+        true
     }
  }  
 mod test;
