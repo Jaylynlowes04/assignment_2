@@ -83,7 +83,21 @@ impl<T: PartialEq + Debug + Clone> DynamicLinkedList<T> {
     }
     
     pub fn delete_at_index(&mut self, index: usize) -> bool {
-        todo!("not implemented");
+        if index >= self.length {
+            return false;
+        }
+    
+        let mut current = &mut self.head;
+    
+        for _ in 0..index {
+            current = &mut current.as_mut().unwrap().next;
+        }
+    
+        let next = current.as_mut().unwrap().next.take();
+        *current = next;
+    
+        self.length -= 1;
+        true
     }
     
 }
