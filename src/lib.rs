@@ -112,6 +112,9 @@ impl<T: PartialEq + Debug + Clone> DynamicLinkedList<T> {
     }
         false
     }
-    
+
+    pub fn update_element_at_index() {
+        todo!("not implemented");
+    }
 }
 mod test;
