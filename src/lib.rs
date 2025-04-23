@@ -255,6 +255,12 @@ impl<T: Clone + PartialEq> StaticLinkedList<T> {
         false
     }
 
+    /// # Description
+    /// Inserts a new element at a specific index.
+    /// 
+    /// # Parameters
+    /// - index: the position to insert the element.
+    /// - data: the element to insert.
     pub fn insert_at_index(&mut self, index: usize, data: T) {
         if index > self.length {
             return;
