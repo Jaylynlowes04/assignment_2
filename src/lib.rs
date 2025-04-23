@@ -113,7 +113,7 @@ impl<T: PartialEq + Debug + Clone> DynamicLinkedList<T> {
         false
     }
 
-    pub fn update_element_at_index() {
+    pub fn update_element_at_index(&mut self, index: usize, data: T) -> bool {
         todo!("not implemented");
     }
 }
