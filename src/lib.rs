@@ -52,6 +52,12 @@ impl<T: PartialEq + Debug + Clone> DynamicLinkedList<T> {
     
     }
 
+    /// # Description
+    /// Inseerts an element at a specific index.
+    /// 
+    /// # Parameters
+    /// - index: the position to insert the element.
+    /// - data: the element to insert.
     pub fn insert_at_index(&mut self, index: usize, data: T) {
         if index > self.length {
             return;
