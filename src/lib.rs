@@ -205,6 +205,14 @@ impl<T: Clone + PartialEq> StaticLinkedList<T> {
         } 
     }
 
+    /// # Description
+    /// Retrieves an element at a specific index.
+    /// 
+    /// # Parameterss
+    /// - index: the position to access.
+    /// 
+    /// # Returns 
+    /// The element at the specified index
     pub fn get(&self, index: usize) -> Option<T> {
         if index >= self.length {
             return None;
