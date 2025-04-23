@@ -207,5 +207,8 @@ impl<T: Clone + PartialEq> StaticLinkedList<T> {
         Some(self.nodes[current].as_ref()?.data.clone())
     }
 
+    pub fn delete_element(&mut self, data: T) -> bool {
+        todo!("not implemented");
+    }
  }  
 mod test;
