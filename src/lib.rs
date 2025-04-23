@@ -290,7 +290,17 @@ impl<T: Clone + PartialEq> StaticLinkedList<T> {
     }
 
     pub fn update_element_at_index(&mut self, index: usize, data: T) -> bool {
-        todo!("not implemented");
+        if index >= self.length {
+            return false;
+        }
+
+        let mut current = self.head.unwrap();
+        for _ in 0..index {
+            current = self.nodes[current].as_ref().unwrap().next.unwrap();
+        }
+
+        self.nodes[current].as_mut().unwrap().data = data;
+        true
     }
  }  
 mod test;
