@@ -1,6 +1,6 @@
 mod test {
     use crate::DynamicLinkedList;
-
+    use crate::StaticLinkedList;
 
     #[test]
     fn should_insert_and_get() {
@@ -78,5 +78,18 @@ mod test {
         list.insert(21);
         assert!(list.find(14));
         assert!(!list.find(100));
+    }
+
+    #[test] 
+    fn should_static_insert_and_get() {
+        let mut list = StaticLinkedList::new();
+        list.insert("apple".to_string());
+        list.insert("banana".to_string());
+        list.insert("cherry".to_string());
+
+        assert_eq!(list.get(0), Some("apple".to_string()));
+        assert_eq!(list.get(1), Some("banana".to_string()));
+        assert_eq!(list.get(2), Some("cherry".to_string()));
+        assert_eq!(list.get(3), None);
     }
 }
